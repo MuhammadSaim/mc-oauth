@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/outlook/send', [\App\Http\Controllers\OutlookMailController::class, 'index']);
+
 Route::get('/microsoft/webhook', [\App\Http\Controllers\DashboardController::class, 'mc_webhook'])->name('microsoft.webhook');
 
 
