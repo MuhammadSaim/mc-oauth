@@ -31,4 +31,11 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'microsoft' => [
+        'client_id'     => env('CLIENT_ID'),
+        'tenant_id'     => env('TENANT_ID'),
+        'scopes'        => env('GRAPH_USER_SCOPES'),
+        'client_secret' => env('CLIENT_SECRET')
+    ]
+
 ];
