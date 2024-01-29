@@ -10,17 +10,11 @@ class MCGraphAPI
 
     private $auth_client;
 
-    private $graph_api_url;
-
     public function __construct()
     {
         $this->auth_client = Http::withOptions([
             'base_uri'      => 'https://login.microsoftonline.com',
             'Content-Type'  => 'application/x-www-form-urlencoded'
-        ]);
-
-        $this->graph_api_url = Http::withOptions([
-            'base_uri'      => 'https://graph.microsoft.com/v1.0/me/',
         ]);
     }
 
