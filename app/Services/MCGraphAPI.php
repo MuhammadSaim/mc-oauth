@@ -84,6 +84,26 @@ class MCGraphAPI
 
     /**
      *
+     * get the new access_token
+     *
+     * @param string $refresh_token
+     * @return array
+     */
+    public function getRefreshAccessToken(string $refresh_token): array
+    {
+        $response = $this->auth_client->asForm()->post(sprintf('%s/oauth2/v2.0/token', config('services.microsoft.tenant_id')), [
+            'client_id'     => config('services.microsoft.client_id'),
+            'grant_type'    => 'refresh_token',
+            'refresh_token' => $refresh_token,
+            'scope'         => config('services.microsoft.scopes'),
+            'client_secret' => config('services.microsoft.client_secret')
+        ]);
+        return $response->json();
+    }
+
+
+    /**
+     *
      * generate the code for verification state
      *
      * @return string

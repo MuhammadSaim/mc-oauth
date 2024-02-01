@@ -11,18 +11,20 @@ class OutlookMailController extends Controller
     public function index(OutlookMailService $outlookMailService)
     {
         $user = User::where('id', auth()->id())->first();
-        $outlookMailService->send_mail(
-            $user->mc_access_token,
-            'This is test email from outlook',
-                    'this is the content of an email',
+        $data = $outlookMailService->send_mail(
+            $user,
+            'This is test email from outlook using Graph API Laravel',
+                    'this is the content of an email TO Laravel',
             [
                 [
                     'emailAddress' => [
-                        'muhammadsaim494@gmail.com'
+                        'address' => 'muhammadsaim494@gmail.com'
                     ]
                 ]
             ]
         );
+
+        dd($data);
     }
 
 }
